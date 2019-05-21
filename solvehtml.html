@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Solve It </title>
+    <script defer src="./solvehtml.js"></script>
+</head>
+
+<body>
+    <p>SOLVE IT 6</p>
+   <form id="kuadrat" action="">
+        <p>Masukan angka: </p>
+        <p><input type="text" name="inputUser" id="angka"></p>
+        
+   </form>
+
+   <button onclick="funKuadrat()">Kuadratkan!</button>
+        <br>
+        <p id="hasil">Hasil</p>
+    <br><br>
+
+
+    <p>SOLVE IT 7</p>    
+    <form id="pangkat" action="">
+        <p>Masukkan angka 1:
+        <input type="text" name="user 1" id="angka1">
+        <br><br>
+        Masukkan angka 2:
+        <input type="text" name="user 2" id="angka2">
+        </p>
+        
+    </form>
+
+    <button onclick="funPangkat()">Pangkatkan!</button>
+    <p id="hasil2">Hasil</p>
+    <br><br>
+
+    <p>SOLVE IT 8</p>
+    <form id="pencarian">
+        <p>Ketik kalimat: <br>
+        <input type="text" name="kalimat" id="kalimat">
+        <br><br> Karakter yang dicari: <br>
+        <input type="text" name="cari" id="cari"></p>
+    </form>
+    
+    <button onclick="mencari()">Cari!</button>
+    <p id="hasilCari">Hasil</p>
+    <br><br>
+
+    <p>SOLVE IT 9</p>
+    <form id="kalkulator">
+        <p> Masukkan angka 1:
+            <input type="text" id="angkaSatu">
+            <br><br>
+            Masukkan angka 2:
+            <input type="text" id="angkaDua">
+        </p>
+    </form>
+
+    <button onclick="kali()"><p>Kali X</p></button>
+    <button onclick="bagi()"><p>Bagi :</p></button>
+    <button onclick="tambah()"><p>Tambah +</p></button>
+    <button onclick="kurang()"><p>Kurang -</p></button>
+    <br><br>
+    <button onclick="mod()"><p>Modulus %</p></button>
+    <button onclick="pangkat()"><p>Pangkat ^</p></button>
+
+    <p id="hasilCal">Hasil</p>
+    <br><br>
+
+    <p>SOLVE IT 10</p>
+    <form id="question">
+        
+        <p><b>1. Siapakah Presiden ketiga Republik Indonesia?</b></p>
+        <input type="radio" name="pres" id="habibie" value="Prof.B.J.Habibie"> Prof.B.J.Habibie
+        <input type="radio" name="pres" id="gusdur" value="Abdurrahman Wahid"> Abdurrahman Wahid
+        <input type="radio" name="pres" id="soekarno" value="Ir. Soekarno"> Ir. Soekarno
+        <input type="radio" name="pres" id="jokowi" value="Joko Widodo"> Joko Widodo
+        <br>
+
+        <p><b>2. Berikut adalah nama-nama bahasa pemograman, <i>kecuali ...</i></b></p>
+        <input type="radio" name="bhs" value="python" id="python" value="Phyton">Python
+        <input type="radio" name="bhs" value="micro" id="micro" value="Micro:bit">Micro:bit
+        <input type="radio" name="bhs" value="javascript" id="js" value="JavaScript">javascript
+        <input type="radio" name="bhs" value="html" id="HTML">HTML
+        <br>
+
+        <p><b>3. Apa judul lagu yang diduga diplagiat oleh lagu 'Sayang' Via Vallen?</b></p>
+        <input type="radio" name="via" value="qing" id="qing" value="Qing Fei Dei Yi">Qing Fei Dei Yi
+        <input type="radio" name="via" value="ting" id="ting" value="Ting Hai">Ting Hai
+        <input type="radio" name="via" value="mirai" id="mirai" value="Mirai E Kiroro">Mirai E Kiroro
+        <input type="radio" name="via" value="hau" id="hau" value="Hau Siang Hau Siang">Hau Siang Hau Siang
+        <br>
+        
+        <p><b>4. Siapakah sosok di balik topeng Batman?</b></p>
+        <input type="radio" name="bat" value="natasha" id="natasha" value="Natasha Romanov">Natasha Romanov
+        <input type="radio" name="bat" value="peter" id="peter" value="Peter Parker">Peter Parker
+        <input type="radio" name="bat" value="tony" id="tony" value="Tony Stark">Tony Stark
+        <input type="radio" name="bat" value="bruce" id="bruce" value="Bruce Wayne">Bruce Wayne
+        <br>
+        
+        <p><button onclick="submit()">S U B M I T</button></p>
+    
+        <h1 id="nilai">Nilai akhir Anda</h1>
+    </form>
+
+
+</body>
+
+</html>

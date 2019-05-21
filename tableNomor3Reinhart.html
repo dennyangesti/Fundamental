@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Table nomor 3</title>
+
+    <style>
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 7px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        Nama: <input type="text" name="inputNama" id="inputNama">    
+        Tgl.lahir: <input type="date" name="inputTanggal" id="inputTanggal">
+        Kota: <input type="text" name="inputKota" id="inputKota">
+    </center>
+
+    <br><br>
+
+    <center>
+        <center><input type="button" value="Daftar Baru" onclick="submit()"></center>
+        <br>
+
+        <input type="button" value="Sort Nama ↑" onclick="namaAscending()" >
+
+        <input type="button" value="Sort Nama ↓" onclick="namaDescending()" >
+
+        <input type="button" value="Sort Usia ↑" onclick="usiaAscending()">
+
+        <input type="button" value="Sort Usia ↓" onclick="usiaDescending()">
+
+        <input type="button" value="Sort Kota ↑" onclick="kotaAscending()">
+
+        <input type="button" value="Sort kota ↓" onclick="kotaDescending()">
+
+        <br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th colspan="3" >Tanggal Lahir</th>
+                    <th>Zodiak</th>
+                    <th>Usia</th>
+                    <th>Pensiun</th>
+                    <th>Kota</th>
+                    <th>Hapus</th>
+                </tr>
+            </thead>
+            <tbody id='isiBaris'>
+
+                <!-- <tr>
+                    <td><center>Budi</center></td>
+                    <td><center>12</center></td>
+                    <td><center>Januari</center></td>
+                    <td><center>1986</center></td>
+                    <td><center>Capricorn</center></td>
+                    <td><center>32</center></td>
+                    <td><center>-23</center></td>
+                    <td><center>Ambon</center></td>
+                    <td><input type="button" value="Hapus" onclick="hapusRow()"></td>
+                </tr> -->
+
+            </tbody>
+
+        </table>
+
+    </center>
+
+</body>
+
+
+<script>
+
+    var arrayData = [];
+    arrayData[0] = {inputNama: "Reinhart", tanggal: 19, bulanShow: "March", tahun: 1996, zodiak:'Pisces', umur:23, pensiun:-32,inputKota:'Jakarta'}
+    arrayData[1] = {inputNama: "Ann", tanggal: 23, bulanShow: "February", tahun: 1990, zodiak:'Gemini', umur:29, pensiun:-26,inputKota:'New York'}
+    arrayData[2] = {inputNama: "Steph", tanggal: 03, bulanShow: "September", tahun: 1995, zodiak:'Virgo', umur:24, pensiun:-31,inputKota:'Tangerang'}
+
+    function ShowList() {
+        var list = ''
+        for ( var i = 0; i < arrayData.length; i++){
+            list = list + `
+            <tr>
+                <td><center>${arrayData[i].inputNama}</center></td>
+                <td><center>${arrayData[i].tanggal}</center></td>
+                <td><center>${arrayData[i].bulanShow}</center></td>
+                <td><center>${arrayData[i].tahun}</center></td>
+                <td><center>${arrayData[i].zodiak}</center></td>
+                <td><center>${arrayData[i].umur}</center></td>
+                <td><center>${arrayData[i].pensiun}</center></td>
+                <td><center>${arrayData[i].inputKota}</center></td>
+                <td><input type="button" value="Hapus" id=${i} onclick="hapusRow(this.id)"></td>
+            </tr>
+            `
+        }
+        document.getElementById('isiBaris').innerHTML = list;
+    }
+
+    
+
+    console.log(arrayData);
+    ShowList(arrayData);
+
+
+    
+
+    function submit() {
+        var inputNama = document.getElementById('inputNama').value;
+        var inputTanggal = document.getElementById('inputTanggal').value;       //1996-03-19 
+        var inputKota = document.getElementById('inputKota').value;
+
+        inputNama = inputNama.charAt(0).toUpperCase() + inputNama.slice(1).toLowerCase();
+
+        var splitTanggal = inputTanggal.split('-');     // ["1996", "03", "19"]
+        var tanggal = splitTanggal[2];  //19
+        var bulan = Number(splitTanggal[1]);    //03
+            var month = new Array();
+            month[0] = "January";
+            month[1] = "February";
+            month[2] = "March";
+            month[3] = "April";
+            month[4] = "May";
+            month[5] = "June";
+            month[6] = "July";
+            month[7] = "August";
+            month[8] = "September";
+            month[9] = "October";
+            month[10] = "November";
+            month[11] = "December";
+        var bulanShow = month[bulan-1];
+        
+        var tahun = splitTanggal[0];    //1996
+
+        inputKota = inputKota.charAt(0).toUpperCase() + inputKota.slice(1).toLowerCase();
+
+        var zodiak='zodiak';
+        var umur = new Date().getFullYear() -  inputTanggal.split('-')[0] ;
+        var pensiun = -(55 - umur)
+
+        //Push object ke arrayData
+        arrayData.push( {
+            inputNama,
+            tanggal,
+            bulanShow,
+            tahun,
+            zodiak,
+            umur,
+            pensiun,
+            inputKota
+        });     /* arrayData = [ {bulan: "03", inputKota: "Jakarta", inputNama: "Reinhart"
+        ,pensiun: -32, tahun: "1996", tanggal: "19", umur: 23, zodiak: "zodiak"}] */
+        console.log(arrayData);
+
+        ShowList(arrayData);
+    }
+
+
+    function namaAscending() {
+        function compare (a,b) {
+            var nameA = a.inputNama
+            var nameB = b.inputNama
+
+            var comparison = 0;
+            if (nameA > nameB) {
+                comparison = 1;
+            }
+            else if (nameA < nameB) {
+                comparison = -1;
+            }
+            return comparison;
+        }
+        var arrayNamaAscending = arrayData.sort(compare)
+
+        ShowList(arrayNamaAscending);
+        // var kumpulanNamaArray = arrayData.map( val => { return (val.inputNama) });
+        // console.log(kumpulanNamaArray);
+
+        // var namaAscending = kumpulanNamaArray.sort();
+        // console.log(namaAscending);
+    }
+
+    function namaDescending() {
+        var namaDescending = arrayData.sort(function(a,b) {
+            var nameA = a.inputNama
+            var nameB = b.inputNama
+
+            var comparison = 0;
+            if (nameB > nameA) {
+                comparison = 1;
+            }
+            else if (nameB < nameA) {
+                comparison = -1;
+            }
+            return comparison;
+        })
+
+        ShowList(namaDescending);
+    }
+
+    function hapusRow(clicked_id) {
+        arrayData.splice(clicked_id,1);
+        ShowList();
+        console.log(arrayData);      
+    }
+
+
+    
+
+
+</script>
+
+</html>
+
+
+
+<!-- function fpb_kpk(num1,num2) {
+
+        
+    for ( var i = 0; )
+    if(Number.isInteger(num1/2)) {
+        num1 = num1 / 2;
+    }
+    console.log(num1);
+    
+}
+
+
+// fpb_kpk(3,1)
+fpb_kpk(90,168)     //fpb = 6   kpk = 2520 -->

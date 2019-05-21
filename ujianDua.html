@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ujian no. 2 by Denny Angesti Pratama</title>
+  </head>
+  <body>
+    <script>
+      arrAngka = [];
+      do {
+        var inputUser = parseInt(prompt("Masukkan angka"));
+        var check = true;
+        arrAngka.push(inputUser);
+
+        if (isNaN(inputUser)) {
+          check = false;
+        }
+      } while (check == true);
+
+      arrAngka.splice(arrAngka.length - 1, 1);
+      console.log(arrAngka);
+
+      var arrMin = arr => {
+        return arr.reduce(function(a, b) {
+          return a < b ? a : b;
+        });
+      };
+
+      var arrMax = arr => {
+        return arr.reduce(function(a, b) {
+          return a > b ? a : b;
+        });
+      };
+
+      console.log(`Nilai tertinggi: ${arrMax(arrAngka)}`);
+      console.log(`Nilai terendah: ${arrMin(arrAngka)}`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script defer src="tableFormV2.js"></script>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+      }
+      form {
+        width: 65%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form>
+      <fieldset>
+        <legend>Filter</legend>
+        <p>
+          Nama:
+          <input
+            type="text"
+            id="search"
+            oninput="functionFilterNamaOninput()"
+          />
+        </p>
+        <p>
+          Umur: <input type="number" name="num1" id="num1" onkeyup="fn3()" /> -
+          <input type="number" name="num2" id="num2" onkeyup="fn3()" />
+        </p>
+
+        <p>
+          Pekerjaan:
+          <select name="job" id="job"> </select>
+        </p>
+        <p>
+          <input
+            type="button"
+            value="Search Job"
+            onclick="functionSearchJob()"
+          />
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Input Data</legend>
+        <table>
+          <td><input type="text" name="nama" id="nama" /></td>
+          <td><input type="number" name="nama" id="umur" /></td>
+          <td><input type="text" name="nama" id="jobT" /></td>
+        </table>
+        <p><input type="button" value="Submit" onclick="functionSubmit()" /></p>
+      </fieldset>
+      <fieldset>
+        <legend>Tabel Data</legend>
+        <table id="myTable">
+          <thead>
+            <th>Nama</th>
+            <th>Umur</th>
+            <th>Pekerjaan</th>
+          </thead>
+          <tbody id="here"></tbody>
+        </table>
+      </fieldset>
+    </form>
+  </body>
+
+  <script>
+    var arrayData = [];
+
+    arrayData[0] = { nama: "Alex", umur: 22, pekerjaan: "Dev" };
+    arrayData[1] = { nama: "Alicia", umur: 32, pekerjaan: "Dev" };
+    arrayData[2] = { nama: "Alona", umur: 26, pekerjaan: "Dev" };
+    arrayData[3] = { nama: "Batios", umur: 33, pekerjaan: "CEO" };
+    arrayData[4] = { nama: "Bakhti", umur: 38, pekerjaan: "PM" };
+    arrayData[5] = { nama: "Charlee", umur: 27, pekerjaan: "CTO" };
+
+    var list = "";
+    for (var i = 0; i < arrayData.length; i++) {
+      list =
+        list +
+        `
+        <tr>
+            <td>${arrayData[i].nama}</td>
+            <td>${arrayData[i].umur}</td>
+            <td>${arrayData[i].pekerjaan}</td>
+        </tr>
+        `;
+    }
+
+    document.getElementById("here").innerHTML = list;
+
+    console.log(arrayData);
+
+    //Dropdown pekerjaan
+    var arrPekerjaan = ["All", "Dev", "CEO", "PM", "CTO"];
+    var pekerjaanUI;
+    for (var i = 0; i < arrPekerjaan.length; i++) {
+      pekerjaanUI =
+        pekerjaanUI +
+        `
+        <option value=${arrPekerjaan[i]}> ${arrPekerjaan[i]} </option>
+        `;
+    }
+    document.getElementById("job").innerHTML = pekerjaanUI;
+
+    ///////////////////////////////////////////////////////////////////////
+    //Function Button SUBMIT
+    var functionSubmit = () => {
+      var nama = document.getElementById("nama").value;
+      var umur = parseInt(document.getElementById("umur").value);
+      var pekerjaan = document.getElementById("jobT").value; //Input 'Dev'
+
+      arrayData.push({
+        nama,
+        umur,
+        pekerjaan
+      });
+      console.log(arrayData); //Udah di pushed arrayData nya
+      showUI(arrayData); //input array berisi 7 data
+
+      /////////////////////////////////////////////////////////
+      //update dropDown pekerjaan
+
+      var checkLength = 0;
+      for (var i = 0; i < arrPekerjaan.length; i++) {
+        //var arrPekerjaan = [ 'All', 'Dev', 'CEO', 'PM', 'CTO'] -> length = 5
+        // Misalkan input: 'Dev' -> checkLength = 4
+        // input: 'Manager' -> checkLength = 5
+
+        if (pekerjaan.toLowerCase() !== arrPekerjaan[i].toLowerCase()) {
+          checkLength = checkLength + 1;
+        }
+      }
+      console.log(checkLength);
+
+      if (checkLength == arrPekerjaan.length) {
+        //Manager -> 5=5
+        arrPekerjaan.push(pekerjaan);
+      }
+      console.log(arrPekerjaan);
+
+      var pekerjaanUI;
+      for (var i = 0; i < arrPekerjaan.length; i++) {
+        pekerjaanUI =
+          pekerjaanUI +
+          `
+            <option value=${arrPekerjaan[i]}> ${arrPekerjaan[i]} </option>
+            `;
+      }
+      document.getElementById("job").innerHTML = pekerjaanUI;
+    };
+
+    var functionFilterNamaOninput = () => {
+      // input keyboard di textbox -> function works automatically
+      var readInputNama = document.getElementById("search").value.toLowerCase();
+      console.log(readInputNama);
+
+      var listFilterNama = "";
+      for (var i = 0; i < arrayData.length; i++) {
+        if (arrayData[i].nama.toLowerCase().includes(readInputNama) == true) {
+          //true or false BOOLEAN
+          listFilterNama =
+            listFilterNama +
+            `
+                <tr>
+                    <td>${arrayData[i].nama}</td>
+                    <td>${arrayData[i].umur}</td>
+                    <td>${arrayData[i].pekerjaan}</td>
+                </tr>
+                `;
+        }
+      }
+      document.getElementById("here").innerHTML = listFilterNama;
+    };
+
+    var functionSearchJob = () => {
+      var readPekerjaan = document.getElementById("job").value; //Misalkan input = 'Dev'
+      console.log(readPekerjaan); //All
+
+      console.log(arrPekerjaan[0]);
+
+      var listPekerjaan = "";
+      for (var i = 0; i < arrayData.length; i++) {
+        if (readPekerjaan === arrPekerjaan[0]) {
+          listPekerjaan =
+            listPekerjaan +
+            `
+                <tr>
+                    <td> ${arrayData[i].nama} </td>
+                    <td> ${arrayData[i].umur} </td>
+                    <td> ${arrayData[i].pekerjaan} </td>
+                </tr>
+                `;
+        } else if (readPekerjaan == arrayData[i].pekerjaan) {
+          listPekerjaan =
+            listPekerjaan +
+            `
+                <tr>
+                    <td> ${arrayData[i].nama} </td>
+                    <td> ${arrayData[i].umur} </td>
+                    <td> ${arrayData[i].pekerjaan} </td>
+                </tr>
+                `;
+        }
+      }
+      document.getElementById("here").innerHTML = listPekerjaan;
+    };
+
+    var showUI = arrayData => {
+      var list2 = "";
+      for (var i = 0; i < arrayData.length; i++) {
+        list2 =
+          list2 +
+          `
+            <tr>
+                <td>${arrayData[i].nama}</td>
+                <td>${arrayData[i].umur}</td>
+                <td>${arrayData[i].pekerjaan}</td>
+            </tr>`;
+      }
+      document.getElementById("here").innerHTML = list2;
+      //console.log(list);
+    };
+  </script>
+</html>

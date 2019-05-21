@@ -1,0 +1,136 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Ujian No. 3 by Denny Angesti Pratama</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+      }
+      form {
+        width: 65%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form>
+      <fieldset>
+        <legend>Filter</legend>
+        <p>
+          Nama:
+          <input
+            type="text"
+            id="search"
+            placeholder="Masukkan Nama"
+            oninput="filNama()"
+          />
+        </p>
+        <p>
+          Umur:
+          <input
+            type="number"
+            name="num1"
+            id="num1"
+            placeholder="0"
+            onkeyup="filUmur()"
+          />
+          -
+          <input
+            type="number"
+            name="num2"
+            id="num2"
+            placeholder="99"
+            onkeyup="filUmur()"
+          />
+        </p>
+
+        <p>
+          Pekerjaan:
+          <select name="job" id="job"> </select>
+        </p>
+        <p>
+          <input type="button" value="Search Job" onclick="filJob()" />
+        </p>
+        <p>
+          <input type="radio" name="genderF" value="Pria" checked /> Pria
+          <input type="radio" name="genderF" value="Wanita" /> Wanita
+        </p>
+        <p>
+          <input type="button" value="Filter gender" onclick="filSex()" />
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Sorting</legend>
+        <p>
+          <input type="button" value="Sort Nama" onclick="sortNama()" />
+
+          <input type="button" value="Sort Umur" onclick="sortUmur()" />
+
+          <input type="button" value="Sort Kelamin" onclick="sortSex()" />
+
+          <input type="button" value="Sort Pekerjaan" onclick="sortJob()" />
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Input Data</legend>
+        <table>
+          <td>
+            <input
+              type="text"
+              name="nama"
+              id="nama"
+              placeholder="Masukkan Nama"
+            />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="nama"
+              id="umur"
+              placeholder="Masukkan Umur"
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              name="nama"
+              id="jobT"
+              placeholder="Masukkan Pekerjaan"
+            />
+          </td>
+          <td>
+            <p>
+              <input type="radio" name="genderI" value="Pria" checked /> Pria
+              <input type="radio" name="genderI" value="Wanita" /> Wanita
+            </p>
+          </td>
+        </table>
+        <p><input type="button" value="Submit" onclick="funSubmit()" /></p>
+      </fieldset>
+      <fieldset>
+        <legend>Tabel Data</legend>
+        <table id="myTable">
+          <thead>
+            <th>Nama</th>
+            <th>Umur</th>
+            <th>Kelamin</th>
+            <th>Pekerjaan</th>
+          </thead>
+          <tbody id="tableBaru"></tbody>
+        </table>
+      </fieldset>
+    </form>
+  </body>
+
+  <script defer src="./ujianTiga.js"></script>
+</html>

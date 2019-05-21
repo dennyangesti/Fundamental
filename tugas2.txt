@@ -1,0 +1,44 @@
+Latihan 2
+
+PasarOnline V1.1
+
+Selamat datang di PasarOnline
+    daftar menu:
+    1. Ayam @ 25.000
+    2. Ikan @ 50.000
+    3. Sapi @ 75.000
+
+Masukkan jumlah Ayam/Ikan/Sapi
+
+Ingin belanja lagi ?
+    jika iya akan kembali ke menu awal
+    jika tidak lanjut minta uang
+
+alert{
+    Ayam
+    25.000 x jumlah = hasil
+    Ikan
+    50.000 x jumlah = hasil
+    Sapi
+    75.000 x jumlah = hasil
+
+    Total yang harus dibayar
+}
+Masukkan Uangvar
+    Jika kurang dari total biaya
+        Hasil belanja sekian
+        Uang yang anda masukkan kurang sekian
+        Masukkan jumlah uang kembali
+    Jika pas atau lebih maka lanjut
+
+    console.log(
+    Data belanjaan
+        barang X jumlah = hasil
+        barang X jumlah = hasil
+        barang X jumlah = hasil
+
+        total belanja
+        Jumlah uang
+        kembali
+
+        Terimakasih, hati - hati

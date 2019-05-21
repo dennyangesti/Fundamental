@@ -1,0 +1,29 @@
+table{
+    border-collapse: collapse;
+}
+body {
+    padding: 0;
+    margin: 0;
+}
+/* DIV */
+div.wrapF {
+    margin: 13px;
+}
+/* Table */
+table,th,td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table{
+    margin: 0 auto;   
+}
+table.satu {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+table.dalam {
+    margin: 20px;
+}
+thead th {
+    padding: 20px;
+}

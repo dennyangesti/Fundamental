@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script defer src="Review.js"></script>
+    <link rel="stylesheet" href="table-v2.css" />
+  </head>
+
+  <body>
+    <form>
+      <fieldset>
+        <legend>Filter</legend>
+        <p>
+          Nama:
+          <input
+            type="text"
+            placeholder="Ketik disini"
+            id="search"
+            oninput="filNama()"
+          />
+        </p>
+        <p>
+          Umur:
+          <input
+            type="number"
+            placeholder="0"
+            name="num1"
+            id="num1"
+            onkeyup="filUmur()"
+          />
+          -
+          <input
+            type="number"
+            placeholder="999"
+            name="num2"
+            id="num2"
+            onkeyup="filUmur()"
+          />
+        </p>
+        <p>
+            Gender:
+            <input type="radio" name="sexF" value="Pria">Pria
+            <input type="radio" name="sexF" value="Wanita">Wanita
+            
+        </p>
+        <p>
+          Pekerjaan:
+          <select name="job" id="job"> </select>
+          <input type="button" value="Search Job" onclick="filJob()" />
+        </p>
+        
+      </fieldset>
+
+      <fieldset>
+        <legend>Input Data</legend>
+        <table>
+         <tr>   
+          <td>
+            <input type="text" name="nama" id="nama" placeholder="Nama anda" />
+          </td>
+          <td>
+            <input
+              type="number"
+              name="nama"
+              id="umur"
+              placeholder="Umur anda"
+            />
+          </td>
+          <td>
+            <input
+              type="text"
+              name="nama"
+              id="jobT"
+              placeholder="Pekerjaan anda"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+              Gender:
+              <input type="radio" name="sex" value="Pria" checked> Pria
+              <input type="radio" name="sex" value="Wanita"> Wanita
+          </td>
+        </tr>
+        </table>
+        <p><input type="button" value="Submit" onclick="funSubmit()" /></p>
+
+      <fieldset>
+        <legend>Tabel Data</legend>
+        <table id="tableData">
+          <thead>
+            <th>Nama</th>
+            <th>Umur</th>
+            <th>Gender</th>
+            <th>Pekerjaan</th>
+          </thead>
+          <tbody id="tableBaru"></tbody>
+        </table>
+      </fieldset>
+    </form>
+  </body>
+</html>

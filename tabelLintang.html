@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tabel Lintang</title>
+    <script defer src="./tabelLintang.js"></script>
+    <style>
+      body {
+        text-align: center;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Nama:
+      <input type="text" id="namaUser" placeholder="Masukkan Nama" /> Tgl.Lahir:
+      <input type="date" id="tanggal" /> Kota:
+      <input type="text" id="kota" placeholder="Masukkan Kota" />
+      Test: <input type="password" name="" id="" />
+    </p>
+    <p><button onclick="daftar()">D A F T A R</button></p>
+    <p>
+      <button onclick="sortNamaUp()">Sort Nama &#8593;</button>
+      <button onclick="sortNamaDown()">Sort Nama &#8595;</button>
+      <button onclick="sortUsiaUp()">Sort Usia &#8593;</button>
+      <button onclick="sortUsiaDown()">Sort Usia &#8595;</button>
+      <button onclick="sortKotaUp()">Sort Kota &#8593;</button>
+      <button onclick="sortKotaDown()">Sort Kota &#8595;</button>
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th colspan="3">Tanggal Lahir</th>
+          <th>Zodiak</th>
+          <th>Usia</th>
+          <th>Pensiun</th>
+          <th>Kota</th>
+          <th>Hapus</th>
+        </tr>
+      </thead>
+      <tbody id="dataTable"></tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fundamental Test</title>
+    <script defer src="./table.js"></script>
+    <link rel="stylesheet" href="table.css">
+</head>
+
+<body>
+
+    <table class="satu">
+        <thead>
+            <th>Form Manusia</th>
+            <th>Form Hewan</th>
+        </thead>
+            <tr>
+                <td>
+                    <div class="wrapF">
+                        <form>
+                            <!--Form Manusia-->
+                            <p> Nama: <input type="text" id="nama"> </p>
+                            <p>Umur: <input type="number" id="umur" min="0" max="100"> </p>
+                            <p>Kelamin: <input type="radio" name="gender" value="Laki-Laki"> Pria
+                            <input type="radio" name="gender" value="Perempuan"> Wanita</p>
+                            <p>Pekerjaan:
+                                <select name="pekerjaan">
+                                    <option value="Dokter">Dokter</option>
+                                    <option value="PNS">PNS</option>
+                                    <option value="Wiraswasta">Wiraswasta</option>
+                                    <option value="Guru">Guru</option>
+                                    <option value="Polisi">Polisi</option>
+                                </select>
+                            </p>
+                        </form>
+                        <button onclick="submit()">Tambahkan</button>
+                    </div>
+                </td>
+                <td>
+                    <div class="wrapF">
+                        <form>
+                            <!--Form Hewan-->
+                            <p> Nama:
+                            <input type="text" id="nama1"></p>
+                            <p>Umur:
+                            <input type="number" id="umur1" min="0" max="100"></p>
+                            <p>Kelamin:
+                            <input type="radio" name="gender1" value="Jantan"> Jantan
+                            <input type="radio" name="gender1" value="Betina"> Betina</p>
+                            <p>Status:
+                            <input type="radio" name="status" value="Liar"> Liar
+                            <input type="radio" name="status" value="Peliharaan"> Peliharaan</p>
+                        </form>
+                        <button onclick="submit1()">Tambahkan</button>
+                    </div>
+                </td>
+            </tr>
+       
+    </table>
+    
+    <br>
+    
+    <table class="dua">
+        <thead>
+            <tr>
+                <th>Data Manusia</th>
+                <th>Data Hewan</th>
+            </tr>
+        </thead>    
+        <tr>
+            <td>
+                <table class="dalam">
+                    <thead>    
+                        <tr>
+                            <th>Nama</th>
+                            <th>Umur</th>
+                            <th>Kelamin</th>
+                            <th>Pekerjaan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="man">
+
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <table class="dalam">    
+                    <thead>    
+                        <tr>
+                            <th>Nama</th>
+                            <th>Umur</th>
+                            <th>Kelamin</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hew">
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+    
+    
+</body>
+</html>

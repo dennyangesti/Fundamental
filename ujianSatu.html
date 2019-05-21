@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ujian No. 1 by Denny Angesti Pratama</title>
+  </head>
+  <body>
+    <p>Dikerjakan oleh: Denny Angesti Pratama</p>
+    <br /><br />
+    <p>1. Persegi</p>
+    <p>2. Segitiga Siku2 Rata Kiri</p>
+    <p>3. Segitiga Siku2 Rata Kanan</p>
+    <p>Jenis Bangunan:</p>
+    <p><input type="text" id="jenis" /></p>
+    <p>Ukuran:</p>
+    <p><input type="text" id="ukuran" /></p>
+    <button onclick="lihat()">Lihat</button>
+    <p id="disini"></p>
+
+    <script>
+      var lihat = () => {
+        var jenis = document.getElementById("jenis").value;
+        var ukuran = document.getElementById("ukuran").value;
+
+        if (jenis == 1) {
+          var persegi = "";
+          var i, j;
+          for (i = 1; i <= `${ukuran}`; i++) {
+            for (j = 1; j <= `${ukuran}`; j++) {
+              persegi += " * ";
+            }
+            persegi += `<br>`;
+          }
+          document.getElementById("disini").innerHTML = persegi;
+        } else if (jenis == 2) {
+          var segitigaKiri = "";
+          var i, j;
+          for (i = 1; i <= `${ukuran}`; i++) {
+            for (j = 1; j <= i; j++) {
+              segitigaKiri += " * ";
+            }
+            segitigaKiri += `<br>`;
+          }
+          document.getElementById("disini").innerHTML = segitigaKiri;
+        } else if (jenis == 3) {
+          var segitigaKanan = "";
+          var i, j, k;
+          for (i = 1; i <= `${ukuran}`; i++) {
+            for (j = i; j <= `${ukuran}`; j++) {
+              segitigaKanan += `&nbsp&nbsp&nbsp`;
+            }
+            for (k = 1; k <= i; k++) {
+              segitigaKanan += " * ";
+            }
+            segitigaKanan += `<br>`;
+          }
+          document.getElementById("disini").innerHTML = segitigaKanan;
+        } else {
+          alert(`Mohon maaf masukkan angka yang benar!`);
+        }
+      };
+    </script>
+  </body>
+</html>
